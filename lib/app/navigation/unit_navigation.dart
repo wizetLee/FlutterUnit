@@ -29,6 +29,7 @@ class UnitNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppBloc, AppState>(
       builder: (_, state) => LayoutBuilder(builder: (_, c) {
+        //  尺寸处理
         if (c.maxWidth > 500) {
           return UnitDeskNavigation();
         }
@@ -83,8 +84,9 @@ class _UnitPhoneNavigationState extends State<UnitPhoneNavigation> {
         physics: _neverScroll,
         controller: _controller,
         children: [
-          if (style == AppStyle.fancy) const FancyHomePage(),
-          if (style == AppStyle.standard) const StandardHomePage(),
+          //样式的变更～～～
+          const FancyHomePage(),
+          const StandardHomePage(),
           GalleryUnit(),
           CollectPageAdapter(),
           UserPage(),

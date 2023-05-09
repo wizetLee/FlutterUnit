@@ -36,6 +36,7 @@ class _DrawPictureState extends State<DrawPicture> {
     ByteData data = await rootBundle.load(path);
     List<int> bytes =
         data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    // 转为ui.Image
     return decodeImageFromList(Uint8List.fromList(bytes));
   }
 

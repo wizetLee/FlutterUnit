@@ -19,9 +19,10 @@ class PureBottomBar extends StatefulWidget {
 }
 
 class _PureBottomBarState extends State<PureBottomBar> {
-  List<String> get bottomBar => const['组件','绘制', '收藏','我的'];
+  List<String> get bottomBar => const['华丽','组件','绘制', '收藏','我的'];
 
   List<IconData> get bottomBarIcon => const[
+    TolyIcon.icon_layout,
     TolyIcon.icon_layout,
     TolyIcon.dingzhi1,
     TolyIcon.icon_collect,
@@ -56,7 +57,7 @@ class _PureBottomBarState extends State<PureBottomBar> {
           },
           currentIndex: _position,
 
-          elevation: 3,
+          elevation: 10,
           // fixedColor: themeColor.activeColor,
           type: BottomNavigationBarType.fixed,
           iconSize: 22,
@@ -65,6 +66,7 @@ class _PureBottomBarState extends State<PureBottomBar> {
           showUnselectedLabels: true,
           showSelectedLabels: true,
           // backgroundColor: themeColor.itemColor,
+          // 点1、数组 -> iterable（dic） -> index
           items: bottomBar.asMap().keys.map((index) => BottomNavigationBarItem(label: bottomBar[index], icon: Icon(bottomBarIcon[index]))).toList(),
         ),
       ],

@@ -23,7 +23,21 @@ class GalleryCardItem extends StatelessWidget {
     ThemeData themeData = Theme.of(context);
     bool isDark = themeData.brightness == Brightness.dark;
 
+    // this.color,
+    // this.shadowColor,
+    // this.surfaceTintColor,
+    // this.elevation,
+    // this.shape,
+    // this.borderOnForeground = true,
+    // this.margin,
+    // this.clipBehavior,
+    // this.child,
+
     return Card(
+      color: Colors.orange,
+      shadowColor: Colors.orange,
+      elevation: 10,
+      borderOnForeground: false,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Container(

@@ -91,12 +91,13 @@ class DunDunPainter extends CustomPainter {
     nosePath.moveTo(79, -0);
     nosePath.relativeLineTo(12, -12);
     nosePath.relativeLineTo(-24, 0);
+    // nosePath.addOval(Rect.fromCenter(center: const Offset(79, -10), width: 12, height: 12));
     nosePath.close();
     Path clipCirclePath = Path();
     clipCirclePath.addOval(
         Rect.fromCenter(center: const Offset(79, -10), width: 12, height: 12));
-
     nosePath = Path.combine(PathOperation.intersect, nosePath, clipCirclePath);
+    // nosePath = clipCirclePath;
     pathPaint.style = PaintingStyle.fill;
     pathPaint.color = Colors.black;
     canvas.drawPath(nosePath, pathPaint);
@@ -107,6 +108,7 @@ class DunDunPainter extends CustomPainter {
     smaliPath.quadraticBezierTo(78, 15, 90, 0);
     smaliPath.quadraticBezierTo(78, 6, 65, 0);
     pathPaint.color = Colors.red;
+    // 同路径不同的画法
     canvas.drawPath(smaliPath, pathPaint);
     canvas.drawPath(
         smaliPath,
@@ -114,6 +116,7 @@ class DunDunPainter extends CustomPainter {
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1
           ..color = Colors.black);
+
 
     Paint colorfulPaint = Paint()..style = PaintingStyle.stroke;
     List<Color> colors = const [
@@ -125,12 +128,17 @@ class DunDunPainter extends CustomPainter {
       Color(0xFF0829FB),
       Color(0xFFB709F4),
     ];
+    // - TileMode.clamp:超出容器的部分会被截断
+    // - TileMode.mirror:超出容器的部分会被镜像平铺
+    // - TileMode.repeated:简单重复平铺
+    // - TileMode.decal:超出容器的部分会透明处理
     final List<double> pos =
         List.generate(colors.length, (index) => index / colors.length);
     colorfulPaint.shader = ui.Gradient.sweep(
         const Offset(60, -5), colors, pos, TileMode.clamp, 0, 2 * pi);
     colorfulPaint.maskFilter = const MaskFilter.blur(BlurStyle.solid, 2);
-
+    // - BlurStyle.solid:模糊原图和背景
+    // - BlurStyle.outer:只模糊原图,背景不受影响
     Path colorfulPath = Path();
     colorfulPath.addOval(
         Rect.fromCenter(center: const Offset(72, -5), width: 120, height: 110));
@@ -222,13 +230,15 @@ class DunDunPainter extends CustomPainter {
       arr.add(offset);
     }
 
-    Path starPath = Path();
+    Path heartPath = Path();
     for (int i = 0; i < len; i++) {
-      starPath.lineTo(arr[i].dx, arr[i].dy);
+      heartPath.lineTo(arr[i].dx, arr[i].dy);
     }
     pathPaint.color = Colors.red;
-    starPath = starPath.shift(const Offset(152, -20));
-    canvas.drawPath(starPath, pathPaint);
+    heartPath = heartPath.shift(const Offset(152, -20));
+    canvas.drawPath(heartPath, pathPaint);
+
+    /// 中间的图标
     if (image != null) {
       Rect src2 = Rect.fromLTWH(
           0, 0, image!.width.toDouble(), image!.height.toDouble());

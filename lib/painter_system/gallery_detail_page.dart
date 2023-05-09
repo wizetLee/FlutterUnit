@@ -74,9 +74,12 @@ class _GalleryDetailPageState extends State<GalleryDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /// SystemUiOverlayStyle 是Flutter中的一个类,用于设置Android和iOS系统的状态栏和导航栏样式。
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value:const SystemUiOverlayStyle(
-            statusBarIconBrightness: Brightness.light
+            statusBarIconBrightness: Brightness.dark,
+          // statusBarBrightness: Brightness.dark,
+          statusBarColor: Colors.orange,
         ),
         child: Column(
           children: [
@@ -102,7 +105,8 @@ class _GalleryDetailPageState extends State<GalleryDetailPage> {
   }
 
   Widget buildTopBar(BuildContext context) {
-    return Hero(
+    // return Container();
+    return Hero(// hero要前后两个key相互呼应
       tag: widget.galleryInfo.name,
       child: Material(
         color: Colors.transparent,

@@ -1,6 +1,9 @@
 import 'package:flutter/widgets.dart';
 // Power By 张风捷特烈--- Generated file. Do not edit.
 // 欢迎支持： https://github.com/toly1994328/FlutterUnit
+
+
+///    实际上都是iconfont上的素材
 class TolyIcon {
     TolyIcon._();
     static const IconData icon_fast = IconData( 0xe607, fontFamily: "TolyIcon");
